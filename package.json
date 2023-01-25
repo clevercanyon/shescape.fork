@@ -24,21 +24,25 @@
       "url": "https://clevercanyon.com"
     }
   ],
-  "files": [
-    "src",
-    "index.js",
-    "index.cjs",
-    "index.d.ts"
-  ],
   "type": "module",
-  "main": "./index.cjs",
-  "types": "./index.d.ts",
+  "files": [
+    "/src",
+    "/index.js",
+    "/index.cjs",
+    "/index.d.ts"
+  ],
   "exports": {
-    "import": "./index.js",
-    "require": "./index.cjs",
-    "types": "./index.d.ts"
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
+    }
   },
-	"dependencies": {
+  "module": "./index.js",
+  "main": "./index.cjs",
+  "unpkg": "./index.js",
+  "types": "./index.d.ts",
+  "dependencies": {
     "which": "^2.0.0"
   }
 }
