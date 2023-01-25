@@ -4,7 +4,7 @@
     "access": "public"
   },
   "license": "MPL-2.0",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "name": "@clevercanyon/shescape.fork",
   "description": "Bash-like brace expansion, implemented in JS.",
   "repository": "https://github.com/clevercanyon/shescape.fork",
