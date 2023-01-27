@@ -1,48 +1,86 @@
 {
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "MPL-2.0",
-  "version": "1.6.5",
-  "name": "@clevercanyon/shescape.fork",
-  "description": "Bash-like brace expansion, implemented in JS.",
-  "repository": "https://github.com/clevercanyon/shescape.fork",
-  "homepage": "https://github.com/clevercanyon/shescape.fork#readme",
-  "bugs": "https://github.com/clevercanyon/shescape.fork/issues",
-  "funding": "https://github.com/sponsors/clevercanyon",
-  "keywords": [
-    "clevercanyon"
-  ],
-  "author": {
-    "name": "Eric Cornelissen",
-    "url": "https://ericcornelissen.dev"
-  },
-  "contributors": [
-    {
-      "name": "Clever Canyon",
-      "url": "https://clevercanyon.com"
-    }
-  ],
-  "type": "module",
-  "files": [
-    "/src",
-    "/index.js",
-    "/index.cjs",
-    "/index.d.ts"
-  ],
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "types": "./index.d.ts"
-    }
-  },
-  "module": "./index.js",
-  "main": "./index.cjs",
-  "unpkg": "./index.js",
-  "types": "./index.d.ts",
-  "dependencies": {
-    "which": "^2.0.0"
-  }
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"version": "1.6.5",
+	"license": "MPL-2.0",
+	"name": "@clevercanyon/shescape.fork",
+	"description": "Bash-like brace expansion, implemented in JS.",
+	"repository": "https://github.com/clevercanyon/shescape.fork",
+	"homepage": "https://github.com/clevercanyon/shescape.fork#readme",
+	"bugs": "https://github.com/clevercanyon/shescape.fork/issues",
+	"funding": "https://github.com/sponsors/clevercanyon",
+	"keywords": ["clevercanyon"],
+	"author": {
+		"name": "Eric Cornelissen",
+		"url": "https://ericcornelissen.dev"
+	},
+	"contributors": [
+		{
+			"name": "Clever Canyon",
+			"url": "https://clevercanyon.com"
+		}
+	],
+	"type": "module",
+	"files": ["/src", "/index.js", "/index.cjs", "/index.d.ts"],
+	"bin": {},
+	"imports": {},
+	"exports": {
+		".": {
+			"import": "./index.js",
+			"require": "./index.cjs",
+			"types": "./index.d.ts"
+		}
+	},
+	"sideEffects": [],
+	"module": "./index.js",
+	"main": "./index.cjs",
+	"browser": "",
+	"unpkg": "./index.js",
+	"types": "./index.d.ts",
+	"typesVersions": {},
+	"dependencies": {
+		"which": "^2.0.0"
+	},
+	"peerDependencies": {},
+	"peerDependenciesMeta": {},
+	"optionalDependencies": {},
+	"bundleDependencies": [],
+	"devDependencies": {
+		"@clevercanyon/skeleton-dev-deps": "^1.0.91"
+	},
+	"overrides": {},
+	"workspaces": [],
+	"cpu": ["x64", "arm64"],
+	"os": ["darwin", "linux"],
+	"engines": {
+		"node": "^19.2.0 || ^19.4.0",
+		"npm": "^8.19.3 || ^9.2.0"
+	},
+	"config": {
+		"c10n": {
+			"&": {
+				"dotfiles": {
+					"lock": []
+				},
+				"build": {
+					"appType": "",
+					"targetEnv": ""
+				},
+				"github": {
+					"teams": {
+						"engineers": "pull",
+						"architects": "push"
+					},
+					"labels": {},
+					"configVersion": "",
+					"envsVersion": ""
+				},
+				"npmjs": {
+					"configVersions": ""
+				}
+			}
+		}
+	}
 }
