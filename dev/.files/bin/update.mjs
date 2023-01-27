@@ -389,7 +389,7 @@ class Projects {
 
 					log(chalk.green('Running `' + quotedCMD + (quotedArgs.length ? ' ' + quotedArgs.join(' ') : '') + '` in:') + ' ' + chalk.yellow(projDisplayDir));
 					if (!this.args.dryRun) {
-						await u.spawn(split.cmd, split.args, { cwd: projDir });
+						await u.spawn(split.cmd, split.args, { cwd: projDir, stdio: 'inherit' });
 					}
 				}
 			}
@@ -411,7 +411,7 @@ class Projects {
 
 						log(chalk.green('Running `madrun ' + quotedCMD + (quotedArgs.length ? ' ' + quotedArgs.join(' ') : '') + '` in:') + ' ' + chalk.yellow(projDisplayDir));
 						if (!this.args.dryRun) {
-							await u.spawn('npx', ['@clevercanyon/madrun', split.cmd, ...split.args], { cwd: projDir });
+							await u.spawn('npx', ['@clevercanyon/madrun', split.cmd, ...split.args], { cwd: projDir, stdio: 'inherit' });
 						}
 					}
 				}

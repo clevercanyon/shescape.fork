@@ -182,7 +182,7 @@ export default async ({ mode, command /*, ssrBuild */ }) => {
 	} else {
 		pkgProps.type = 'module'; // Always a module when building with Vite.
 		pkgProps.module = pkgProps.main = pkgProps.browser = pkgProps.unpkg = pkgProps.types = '';
-		(pkgProps.files = pkgProps.exports = pkgProps.sideEffects = []), (pkgProps.typesVersions = {});
+		(pkgProps.exports = null), (pkgProps.files = pkgProps.sideEffects = []), (pkgProps.typesVersions = {});
 	}
 
 	/**
