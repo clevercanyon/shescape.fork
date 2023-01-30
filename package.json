@@ -3,7 +3,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "1.6.10",
+	"version": "1.6.11",
 	"license": "MPL-2.0",
 	"name": "@clevercanyon/shescape.fork",
 	"description": "Bash-like brace expansion, implemented in JS.",
@@ -48,7 +48,7 @@
 	"optionalDependencies": {},
 	"bundleDependencies": [],
 	"devDependencies": {
-		"@clevercanyon/skeleton-dev-deps": "^1.0.102"
+		"@clevercanyon/skeleton-dev-deps": "^1.0.103"
 	},
 	"overrides": {},
 	"workspaces": [],
@@ -74,11 +74,11 @@
 						"architects": "push"
 					},
 					"labels": {},
-					"configVersion": "1.0.1",
+					"configVersion": "1.0.2",
 					"envsVersion": ""
 				},
 				"npmjs": {
-					"configVersions": "1.0.1,1.0.0"
+					"configVersions": "1.0.2,1.0.2"
 				}
 			}
 		}
