@@ -127,6 +127,9 @@ export default async ({ mode, command /*, ssrBuild */ }) => {
 	updatePkg.exports = {}; // Exports object initialization.
 	updatePkg.sideEffects = ['./src/*.{html,scss,ts,tsx}']; // <https://o5p.me/xVY39g>.
 
+	if (fs.existsSync(path.resolve(projDir, './src/resources/init-env.ts'))) {
+		updatePkg.sideEffects.push('./src/resources/init-env.ts');
+	}
 	if (isCMA && (isSSR || cmaEntries.length > 1)) {
 		updatePkg.exports = {
 			'.': {
@@ -338,15 +341,15 @@ export default async ({ mode, command /*, ssrBuild */ }) => {
 
 		// @todo Enhance miniflare support.
 		// @todo Add support for testing web workers.
-		environment: ['web'].includes(targetEnv) ? 'jsdom' // <https://o5p.me/Gf9Cy5>.
-			: ['cfp', 'cfw'].includes(targetEnv) ? 'miniflare' // <https://o5p.me/TyF9Ot>.
+		environment: ['web', 'cfp'].includes(targetEnv) ? 'jsdom' // <https://o5p.me/Gf9Cy5>.
+			: ['cfw'].includes(targetEnv) ? 'miniflare' // <https://o5p.me/TyF9Ot>.
 			: ['node'].includes(targetEnv) ? 'node' // <https://o5p.me/Gf9Cy5>.
 			: 'node', // prettier-ignore
 
 		// See: <https://o5p.me/8Pjw1d> for `environment`, `environmentMatchGlobs` precedence.
 		environmentMatchGlobs: [
-			['**/*.web.{test,tests,spec,specs}.{' + vitestExtensions.map((e) => e.slice(1)).join(',') + '}', 'jsdom'],
-			['**/*.{cfp,cfw}.{test,tests,spec,specs}.{' + vitestExtensions.map((e) => e.slice(1)).join(',') + '}', 'miniflare'],
+			['**/*.{web,cfp}.{test,tests,spec,specs}.{' + vitestExtensions.map((e) => e.slice(1)).join(',') + '}', 'jsdom'],
+			['**/*.cfw.{test,tests,spec,specs}.{' + vitestExtensions.map((e) => e.slice(1)).join(',') + '}', 'miniflare'],
 			['**/*.node.{test,tests,spec,specs}.{' + vitestExtensions.map((e) => e.slice(1)).join(',') + '}', 'node'],
 		],
 		deps: {
