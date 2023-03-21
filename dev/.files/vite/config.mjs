@@ -108,7 +108,7 @@ export default async ({ mode, command /*, ssrBuild */ }) => {
 	if ((!isMPA && !isCMA) || !['mpa', 'cma'].includes(appType)) {
 		throw new Error('Must have a valid `config.c10n.&.build.appType` in `package.json`.');
 	}
-	if (!['any', 'cfp', 'cfw', 'node', 'web', 'webw', 'opl'].includes(targetEnv)) {
+	if (!['any', 'node', 'cfw', 'cfp', 'web', 'webw'].includes(targetEnv)) {
 		throw new Error('Must have a valid `config.c10n.&.build.targetEnv` in `package.json`.');
 	}
 	if (isMPA && !mpaEntryIndexSubpath) {
