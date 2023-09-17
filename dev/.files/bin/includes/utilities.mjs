@@ -15,6 +15,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { $chalk, $cmd, $dotenv, $fs, $prettier } from '../../../../node_modules/@clevercanyon/utilities.node/dist/index.js';
 import { $is, $json, $obj, $obp, $str, $url, $version } from '../../../../node_modules/@clevercanyon/utilities/dist/index.js';
+import nodeVersion from './node-version.mjs';
 
 const __dirname = $fs.imuDirname(import.meta.url);
 const binDir = path.resolve(__dirname, '..');
@@ -175,6 +176,12 @@ export default class u {
 
 		if (!$is.plainObject(updates)) {
 			throw new Error('u.updatePkg: Unable to parse `' + updatesFile + '`.');
+		}
+		if ($obj.hasOwn(updates.$ꓺset?.engines, 'node')) {
+			updates.$ꓺset.engines.node = '^' + nodeVersion.previous + ' || ^' + nodeVersion.current;
+		}
+		if ($obj.hasOwn(updates.$ꓺset?.engines, 'npm')) {
+			updates.$ꓺset.engines.npm = '^' + nodeVersion.npm.previous + ' || ^' + nodeVersion.npm.current;
 		}
 		if (await u.isPkgRepo('clevercanyon/dev-deps')) {
 			if (updates.$ꓺdefaults?.['devDependenciesꓺ@clevercanyon/dev-deps']) {

@@ -67,8 +67,8 @@
 		"cpu": ["x64", "arm64"],
 		"os": ["darwin", "linux"],
 		"engines": {
-			"node": "^19.1.0 || ^20.5.1",
-			"npm": "^8.19.3 || ^9.2.0"
+			"node": "^x.x.x || ^x.x.x",
+			"npm": "^x.x.x || ^x.x.x"
 		}
 	},
 	"$ꓺunset": ["typings", "scripts", "workspaces"],

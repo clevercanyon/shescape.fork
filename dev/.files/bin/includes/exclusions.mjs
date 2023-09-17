@@ -47,14 +47,16 @@ const asRelativeGlobs = (from, globs) => {
  * @param   globs Array of exclusion globs.
  *
  * @returns       Exclusions as negated globs.
+ *
+ * @note We don’t re-include anything that’s already a negation.
  */
-const asNegatedGlobs = (globs) => [...new Set(globs)].map((glob) => '!' + glob);
+const asNegatedGlobs = (globs) => [...new Set(globs)].filter((glob) => !/^!/u.test(glob)).map((glob) => '!' + glob);
 
 /**
  * Defines exclusions globs.
  *
- * - Don’t declare any negations here. Instead, use {@see asNegatedGlobs()}.
- * - Don’t use `{}` brace expansions here. Not compatible with TypeScript config.
+ * Note: `{}` brace expansions are not compatible with TypeScript’s config file. Everything listed here should follow
+ * `.gitignore|.npmignore` syntax first, then be converted from `.gitignore` into a fast-glob pattern.
  */
 export default {
 	/**
@@ -62,7 +64,7 @@ export default {
 	 * `@clevercanyon/utilities`. Includes everything we have in our default `./.gitignore`, `./.npmignore`.
 	 */
 	...$obj.map($path.defaultGitNPMIgnoresByCategory, (category) => {
-		return category.map((glob) => '**/' + glob + '/**');
+		return category.map((gitIgnore) => $path.gitIgnoreToGlob(gitIgnore));
 	}),
 
 	/**
@@ -70,10 +72,8 @@ export default {
 	 * potentially customized `./.npmignore` file in the current project directory. The reason is because we intend to
 	 * enforce our standards. For further details {@see https://o5p.me/MuskgW}.
 	 */
-	defaultNPMIgnores: $path.defaultNPMIgnores.map((glob) => {
-		const isNegated = /^!/u.test(glob);
-		glob = isNegated ? glob.replace(/^!/u, '') : glob;
-		return (isNegated ? '!' : '') + '**/' + glob + '/**';
+	defaultNPMIgnores: $path.defaultNPMIgnores.map((npmIgnore) => {
+		return $path.gitIgnoreToGlob(npmIgnore);
 	}),
 
 	/**

@@ -7,7 +7,7 @@
  * @note This entire file will be updated automatically.
  * @note Instead of editing here, please review `./tsconfig.mjs`.
  *
- * Last generated using `./tsconfig.mjs` Sat, Sep 16, 2023, 9:24:36 AM EDT.
+ * Last generated using `./tsconfig.mjs` Sun, Sep 17, 2023, 8:34:00 AM EDT.
  */
 {
 	"include": ["./*.d.ts", "./src/**/*"],
@@ -49,7 +49,7 @@
 		"**/ehthumbs.db/**",
 		"**/Desktop.ini/**",
 		"**/$RECYCLE.BIN/**",
-		"**/Icon\r/**",
+		"**/Icon/**",
 		"**/*.icloud/**",
 		"**/.DS_Store/**",
 		"**/.disk_label/**",
@@ -69,6 +69,8 @@
 		"**/Temporary Items/**",
 		"**/.*/**",
 		"**/*.tsbuildinfo/**",
+		"!**/.env.vault/**",
+		"!**/.env.project/**",
 		"**/tsconfig.*/**",
 		"**/wrangler.*/**",
 		"**/*.config.*/**",

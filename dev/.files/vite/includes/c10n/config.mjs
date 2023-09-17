@@ -82,7 +82,7 @@ export default async ({ mode, command, isSSRBuild, projDir, distDir, pkg, env, a
 
 						if (!fs.existsSync(fileOrDir)) {
 							continue; // Already pruned this in a previous iteration.
-							// e.g., when we get directory parents first, then it’s leaves.
+							// e.g., when we get directory parents first, then its leaves.
 						}
 						if (
 							// These things we expect to prune regularly.
@@ -98,7 +98,7 @@ export default async ({ mode, command, isSSRBuild, projDir, distDir, pkg, env, a
 									...exclusions.specIgnores,
 									...exclusions.benchIgnores,
 								],
-								{ ignoreCase: true },
+								{ ignoreCase: true, dot: false },
 							)
 						) {
 							// These things we expect to prune regularly.

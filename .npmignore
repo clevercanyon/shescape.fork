@@ -3,12 +3,17 @@
 #
 # NPM is aware of this config file's location.
 #
+# The generated portion of this file can be updated using:
+#
+#     $ madrun update npmignore
+#     or: $ madrun update dotfiles
+#
 # Run the following to test configuration:
 #
 #     $ npm pack --dry-run
 #
 # Please keep in mind that if `files` is used in `./package.json`,
-# the `files` setting will **not** be altered by an `./.npmignore` in the
+# the `files` setting will *not* be altered by an `./.npmignore` in the
 # main project directory. In such a case, `./.npmignore` is meaningless.
 #
 # @note CUSTOM EDITS ONLY PLEASE!
@@ -17,8 +22,10 @@
 ##
 
 ##
-# This part is an exact copy of `./.gitignore`.
-##
+# Generated data.
+# <generated:start>
+
+# Last generated Sun, Sep 17, 2023, 8:34:00 AM EDT.
 
 # Locals
 
@@ -46,29 +53,29 @@
 
 # Editors
 
-# :: Vim
+# » Vim
 
 .*.swp
 
-# :: IntelliJ
+# » IntelliJ
 
 .idea
 
-# :: Sublime
+# » Sublime
 
 *.sublime-project
 *.sublime-workspace
 
-# :: Netbeans
+# » Netbeans
 
 *.nbproject
 
-# :: VS Code
+# » VS Code
 
 *.code-search
 *.code-workspace
 
-# :: CTAGs
+# » CTAGs
 
 *.ctags
 
@@ -78,23 +85,23 @@ dist
 
 # Packages
 
-# :: Yarn
+# » Yarn
 
 .yarn
 
-# :: Vendor
+# » Vendor
 
 vendor
 
-# :: NodeJS
+# » NodeJS
 
 node_modules
 
-# :: JSPM
+# » JSPM
 
 jspm_packages
 
-# :: Bower
+# » Bower
 
 bower_components
 
@@ -102,7 +109,6 @@ bower_components
 
 .env*
 .flaskenv*
-
 !.env.vault
 !.env.project
 
@@ -152,43 +158,41 @@ bower_components
 
 # Version Control
 
-# :: Git
+# » Git
 
 .git
 
-# :: Subversion
+# » Subversion
 
 .svn
 _svn
 .svnignore
 
-# :: Bazaar
+# » Bazaar
 
 .bzr
 .bzrignore
 
-# :: Mercurial
+# » Mercurial
 
 .hg
 .hgignore
 
 # Operating Systems
 
-# :: Windows Files
+# » Windows Files
 
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# :: Windows Directories
+# » Windows Dirs
 
 $RECYCLE.BIN
 
-# :: MacOS Files
+# » MacOS Files
 
-# ._* Already listed above.
-Icon?
-!Icons
+Icon
 *.icloud
 .DS_Store
 .disk_label
@@ -196,7 +200,7 @@ Icon?
 .VolumeIcon.icns
 .com.apple.timemachine.*
 
-# :: MacOS Directories
+# » MacOS Dirs
 
 .apdisk
 *.icloud
@@ -211,49 +215,45 @@ Icon?
 Network Trash Folder
 Temporary Items
 
-##
-# This part goes beyond the scope of `./.gitignore`.
-##
-
-# Dist
+# npm:Dist
 
 !dist
 
-# Configs
+# npm:Configs
 
 tsconfig.*
 wrangler.*
 *.config.*
 config.gypi
 
-# Locks
+# npm:Locks
 
 yarn.lock
 composer.lock
 package-lock.json
 
-# Dots
+# npm:Dots
 
 .*
 
-# Src
+# npm:Src
 
 src
 
-# Dev
+# npm:Dev
 
 dev
 
-# Sandbox
+# npm:Sandbox
 
 sandbox
 
-# Examples
+# npm:Examples
 
 example
 examples
 
-# Docs
+# npm:Docs
 
 doc
 docs
@@ -262,7 +262,7 @@ docs
 readme.*
 *.readme.*
 
-# Tests
+# npm:Tests
 
 test
 tests
@@ -271,7 +271,7 @@ tests
 *.test-d.*
 *.tests-d.*
 
-# Specs
+# npm:Specs
 
 spec
 specs
@@ -280,7 +280,7 @@ specs
 *.spec-d.*
 *.specs-d.*
 
-# Benchmarks
+# npm:Benchmarks
 
 bench
 benchmark
@@ -289,12 +289,7 @@ benchmarks
 *.benchmark.*
 *.benchmarks.*
 
-##
-# There are also a few items always included and/or excluded by NPM.
-# See: <https://docs.npmjs.com/cli/v9/configuring-npm/package-json#files>
-# See: <https://docs.npmjs.com/cli/v8/using-npm/developers?v=true#keeping-files-out-of-your-package>
-# Other than `package.json`, `README`, `LICENSE|LICENCE`, our rules already cover everything that NPM does.
-##
+# </generated:end>
 
 ##
 # Customizations.

@@ -21,6 +21,221 @@ const projDir = path.resolve(__dirname, '../../..');
 const projsDir = path.resolve(__dirname, '../../../..');
 
 /**
+ * GitAttributes command.
+ */
+class GitAttributes {
+	/**
+	 * Constructor.
+	 */
+	constructor(args) {
+		this.args = args;
+	}
+
+	/**
+	 * Runs CMD.
+	 */
+	async run() {
+		await this.update();
+
+		if (this.args.dryRun) {
+			u.log($chalk.cyanBright('Dry run. This was all a simulation.'));
+		}
+	}
+
+	/**
+	 * Runs update.
+	 */
+	async update() {
+		/**
+		 * Recompiles `./.gitattributes` file.
+		 */
+
+		u.log($chalk.green('Updating `./.gitattributes`.'));
+		if (!this.args.dryRun) {
+			await (await import(path.resolve(projDir, './dev/.files/bin/gitattributes/index.mjs'))).default({ projDir });
+		}
+
+		/**
+		 * Signals completion with success.
+		 */
+
+		u.log(await u.finaleBox('Success', '`./.gitattributes` update complete.'));
+	}
+}
+
+/**
+ * GitIgnore command.
+ */
+class GitIgnore {
+	/**
+	 * Constructor.
+	 */
+	constructor(args) {
+		this.args = args;
+	}
+
+	/**
+	 * Runs CMD.
+	 */
+	async run() {
+		await this.update();
+
+		if (this.args.dryRun) {
+			u.log($chalk.cyanBright('Dry run. This was all a simulation.'));
+		}
+	}
+
+	/**
+	 * Runs update.
+	 */
+	async update() {
+		/**
+		 * Recompiles `./.gitignore` file.
+		 */
+
+		u.log($chalk.green('Updating `./.gitignore`.'));
+		if (!this.args.dryRun) {
+			await (await import(path.resolve(projDir, './dev/.files/bin/gitignore/index.mjs'))).default({ projDir });
+		}
+
+		/**
+		 * Signals completion with success.
+		 */
+
+		u.log(await u.finaleBox('Success', '`./.gitignore` update complete.'));
+	}
+}
+
+/**
+ * NPMIgnore command.
+ */
+class NPMIgnore {
+	/**
+	 * Constructor.
+	 */
+	constructor(args) {
+		this.args = args;
+	}
+
+	/**
+	 * Runs CMD.
+	 */
+	async run() {
+		await this.update();
+
+		if (this.args.dryRun) {
+			u.log($chalk.cyanBright('Dry run. This was all a simulation.'));
+		}
+	}
+
+	/**
+	 * Runs update.
+	 */
+	async update() {
+		/**
+		 * Recompiles `./.npmignore` file.
+		 */
+
+		u.log($chalk.green('Updating `./.npmignore`.'));
+		if (!this.args.dryRun) {
+			await (await import(path.resolve(projDir, './dev/.files/bin/npmignore/index.mjs'))).default({ projDir });
+		}
+
+		/**
+		 * Signals completion with success.
+		 */
+
+		u.log(await u.finaleBox('Success', '`./.npmignore` update complete.'));
+	}
+}
+
+/**
+ * PrettierIgnore command.
+ */
+class PrettierIgnore {
+	/**
+	 * Constructor.
+	 */
+	constructor(args) {
+		this.args = args;
+	}
+
+	/**
+	 * Runs CMD.
+	 */
+	async run() {
+		await this.update();
+
+		if (this.args.dryRun) {
+			u.log($chalk.cyanBright('Dry run. This was all a simulation.'));
+		}
+	}
+
+	/**
+	 * Runs update.
+	 */
+	async update() {
+		/**
+		 * Recompiles `./.prettierignore` file.
+		 */
+
+		u.log($chalk.green('Updating `./.prettierignore`.'));
+		if (!this.args.dryRun) {
+			await (await import(path.resolve(projDir, './dev/.files/bin/prettierignore/index.mjs'))).default({ projDir });
+		}
+
+		/**
+		 * Signals completion with success.
+		 */
+
+		u.log(await u.finaleBox('Success', '`./.prettierignore` update complete.'));
+	}
+}
+
+/**
+ * BrowsersList command.
+ */
+class BrowsersList {
+	/**
+	 * Constructor.
+	 */
+	constructor(args) {
+		this.args = args;
+	}
+
+	/**
+	 * Runs CMD.
+	 */
+	async run() {
+		await this.update();
+
+		if (this.args.dryRun) {
+			u.log($chalk.cyanBright('Dry run. This was all a simulation.'));
+		}
+	}
+
+	/**
+	 * Runs update.
+	 */
+	async update() {
+		/**
+		 * Recompiles `./.browserslistrc` file.
+		 */
+
+		u.log($chalk.green('Updating `./.browserslistrc`.'));
+		if (!this.args.dryRun) {
+			await (await import(path.resolve(projDir, './dev/.files/bin/browserslist/index.mjs'))).default({ projDir });
+		}
+
+		/**
+		 * Signals completion with success.
+		 */
+
+		u.log(await u.finaleBox('Success', '`./.browserslistrc` update complete.'));
+	}
+}
+
+/**
  * TSConfig command.
  */
 class TSConfig {
@@ -519,6 +734,131 @@ await (async () => {
 			version: (await u.pkg()).version,
 		})
 	)
+		.command({
+			command: ['gitattributes'],
+			describe: 'Updates project `./.gitattributes`.',
+			builder: (yargs) => {
+				return yargs
+					.options({
+						dryRun: {
+							type: 'boolean',
+							requiresArg: false,
+							demandOption: false,
+							default: false,
+							description: 'Dry run?',
+						},
+					})
+					.check(async (/* args */) => {
+						if (!(await u.isInteractive())) {
+							throw new Error('This *must* be performed interactively.');
+						}
+						return true;
+					});
+			},
+			handler: async (args) => {
+				await new GitAttributes(args).run();
+			},
+		})
+		.command({
+			command: ['gitignore'],
+			describe: 'Updates project `./.gitignore`.',
+			builder: (yargs) => {
+				return yargs
+					.options({
+						dryRun: {
+							type: 'boolean',
+							requiresArg: false,
+							demandOption: false,
+							default: false,
+							description: 'Dry run?',
+						},
+					})
+					.check(async (/* args */) => {
+						if (!(await u.isInteractive())) {
+							throw new Error('This *must* be performed interactively.');
+						}
+						return true;
+					});
+			},
+			handler: async (args) => {
+				await new GitIgnore(args).run();
+			},
+		})
+		.command({
+			command: ['npmignore'],
+			describe: 'Updates project `./.npmignore`.',
+			builder: (yargs) => {
+				return yargs
+					.options({
+						dryRun: {
+							type: 'boolean',
+							requiresArg: false,
+							demandOption: false,
+							default: false,
+							description: 'Dry run?',
+						},
+					})
+					.check(async (/* args */) => {
+						if (!(await u.isInteractive())) {
+							throw new Error('This *must* be performed interactively.');
+						}
+						return true;
+					});
+			},
+			handler: async (args) => {
+				await new NPMIgnore(args).run();
+			},
+		})
+		.command({
+			command: ['prettierignore'],
+			describe: 'Updates project `./.prettierignore`.',
+			builder: (yargs) => {
+				return yargs
+					.options({
+						dryRun: {
+							type: 'boolean',
+							requiresArg: false,
+							demandOption: false,
+							default: false,
+							description: 'Dry run?',
+						},
+					})
+					.check(async (/* args */) => {
+						if (!(await u.isInteractive())) {
+							throw new Error('This *must* be performed interactively.');
+						}
+						return true;
+					});
+			},
+			handler: async (args) => {
+				await new PrettierIgnore(args).run();
+			},
+		})
+		.command({
+			command: ['browserslist'],
+			describe: 'Updates project `./.browserslistrc`.',
+			builder: (yargs) => {
+				return yargs
+					.options({
+						dryRun: {
+							type: 'boolean',
+							requiresArg: false,
+							demandOption: false,
+							default: false,
+							description: 'Dry run?',
+						},
+					})
+					.check(async (/* args */) => {
+						if (!(await u.isInteractive())) {
+							throw new Error('This *must* be performed interactively.');
+						}
+						return true;
+					});
+			},
+			handler: async (args) => {
+				await new BrowsersList(args).run();
+			},
+		})
 		.command({
 			command: ['tsconfig'],
 			describe: 'Updates project `./tsconfig.json`.',
